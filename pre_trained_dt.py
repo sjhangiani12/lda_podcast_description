@@ -73,10 +73,11 @@ class LDAModel(object):
     top_pred = -1
     top_pred_prob = -1
     for i in topics[0]:
+      print(i[1])
+      print(ldamodel.print_topic(i[0]))
       if i[1] > top_pred_prob:
         top_pred = i[0]
         top_pred_prob = i[1]
-
     return(ldamodel.print_topic(top_pred))
 
 
