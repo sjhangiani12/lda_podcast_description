@@ -59,10 +59,8 @@ class LDAModel(object):
           )
       )
 
-  def getLDAPreds(self, file_name):
+  def getLDAPreds(self, temp):
     # takes in file, opens, and spits out the return value
-    f = open(file_name, "r")
-    temp = f.read()
 
     temp = [self.preprocess_document(temp)]
     temp

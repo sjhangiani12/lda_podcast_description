@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request
 from waitress import serve
 from error import InvalidUsage
 from pre_trained_dt import LDAModel
+from transcribe import makeTranscript
+import time
 
 app = Flask(__name__)
 
@@ -26,14 +28,22 @@ def handle_invalid_usage(error):
     return response
 
 
+
+
 @app.route('/getLDAPreds', methods=['POST'])
 def get_information():
-    print(request.json)
+    print(request.json['file_url'])
     if not has_args(request.json, ['file_url']):
       raise InvalidUsage('Missing Image URL')
 
+    job_name = str(time.strftime("%Y%m%d-%H%M%S"))
+
+    # take s3 file and transcribe
+    transcription = makeTranscript(job_name,request.json['file_url'],'mp3')
+
     lda = LDAModel()
-    outputs = lda.getLDAPreds("0.txt")
+    # take transcription and make predicition
+    outputs = lda.getLDAPreds(transcription)
 
     # temporarily returning string
     return str(outputs)
