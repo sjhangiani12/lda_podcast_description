@@ -28,8 +28,6 @@ def handle_invalid_usage(error):
     return response
 
 
-
-
 @app.route('/getLDAPreds', methods=['POST'])
 def get_information():
     print(request.json['file_url'])
