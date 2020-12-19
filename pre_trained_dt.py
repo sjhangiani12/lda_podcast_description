@@ -23,7 +23,6 @@ class LDAModel(object):
   LOT_OF_STOPWORDS = frozenset(list(STOPWORDS) + get_stop_words('en') + st.words('english'))
   lemma = nltk.wordnet.WordNetLemmatizer()
 
-
   WHITE_PUNC_REGEX = re.compile(r"[%s]+" % re.escape(whitespace + punctuation), re.UNICODE)
 
   def preprocess_document(self, document_text):
