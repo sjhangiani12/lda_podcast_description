@@ -7,6 +7,8 @@ import time
 
 app = Flask(__name__)
 
+script_name = "script.txt"
+
 def has_args(iterable, args):
     """Verify that all args are in the iterable."""
     try:
@@ -26,7 +28,6 @@ def handle_invalid_usage(error):
     response = jsonify(error.to_dict())
     response.status_code = error.status_code
     return response
-
 
 @app.route('/getLDAPreds', methods=['POST'])
 def get_information():
