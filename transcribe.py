@@ -5,14 +5,9 @@ import json
 import requests
 import os
 
-# BUCKET_NAME = "podcast-uw-final"
-# ACCESS_KEY_ID = os.environ['ACCESS_KEY_ID']
-# ACCESS_SECRET_KEY = os.environ['ACCESS_SECRET_KEY']
-
 BUCKET_NAME = "podcast-uw-final"
-ACCESS_KEY_ID = "AKIAWPLQQ7KDWGXN3QAQ"
-ACCESS_SECRET_KEY = "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"
-
+ACCESS_KEY_ID = os.environ['ACCESS_KEY_ID']
+ACCESS_SECRET_KEY = os.environ['ACCESS_SECRET_KEY']
 
 def makeTranscript(job_name, audio_file, audio_type):
     # Create Boto Client for AWS
